@@ -72,9 +72,24 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .menu a:not(.btn){text-decoration:none;font-size:15px;color:var(--tinta-2)}
 .menu a:not(.btn):hover{color:var(--caramelo)}
 .topo .btn{min-height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap;gap:0}
-@media (max-width:940px){.menu a:not(.btn){display:none}}
+.acoes-topo{display:flex;align-items:center;gap:10px}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--linha);border-radius:12px;background:var(--papel);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}
+.menu-btn span{display:block;width:20px;height:2px;border-radius:2px;background:var(--tinta);transition:transform var(--mov),opacity var(--mov)}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:940px){
+  .menu-btn{display:flex;order:2}
+  .menu{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--creme);border-bottom:1px solid var(--linha);box-shadow:0 18px 30px -20px rgba(30,42,34,.35);padding:8px max(20px,env(safe-area-inset-left,0px)) 20px;display:none}
+  .menu.aberto{display:flex}
+  .menu a:not(.btn){display:block;font-size:18px;color:var(--tinta);padding:15px 4px;border-bottom:1px solid var(--linha)}
+  .menu .btn{margin-top:16px;min-height:50px;font-size:16px}
+  .menu .so-largo{display:inline}
+  .topo .wrap{position:static}
+  section{scroll-margin-top:84px}
+}
 @media (max-width:560px){.so-largo{display:none}.marca span{letter-spacing:.08em;white-space:nowrap}}
-@media (max-width:400px){.marca b{font-size:20px}.marca span{font-size:10px;letter-spacing:.1em}.topo .btn{padding:0 14px}}
+@media (max-width:400px){.marca b{font-size:20px}.marca span{font-size:11.5px;letter-spacing:.06em}}
 
 /* Hero editorial: o título é a peça principal, como nos posts dela */
 .hero{padding:64px 0 72px;border-bottom:1px solid var(--linha)}
@@ -180,15 +195,6 @@ h2 em{font-style:italic;color:var(--caramelo)}
 .faq details p{margin:0 0 22px;color:var(--tinta-2);max-width:42em}
 
 
-/* Atalhos no celular (o menu completo some em telas pequenas) */
-.atalhos{display:none}
-@media (max-width:940px){
-  .atalhos{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 max(20px,env(safe-area-inset-left,0px)) 12px;-webkit-overflow-scrolling:touch}
-  .atalhos::-webkit-scrollbar{display:none}
-  .atalhos a{flex:none;text-decoration:none;font-size:14.5px;font-weight:600;color:var(--tinta);background:var(--papel);border:1px solid var(--linha);border-radius:999px;padding:7px 14px}
-  section{scroll-margin-top:124px}
-}
-
 /* Lado direito do topo: perfil + selo do livro */
 .lado{display:grid;gap:12px}
 .selo-livro{display:flex;gap:12px;align-items:center;text-decoration:none;border:1px solid var(--linha);border-radius:14px;padding:12px 16px;background:var(--creme-2);font-size:15px;line-height:1.4;color:var(--tinta)}
@@ -215,6 +221,44 @@ h2 em{font-style:italic;color:var(--caramelo)}
 .insta .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 40px}
 .insta h2{font-size:clamp(28px,3.2vw,40px)}
 .insta p{color:var(--tinta-2);margin:14px 0 0;max-width:36em}
+
+
+/* Fotos */
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{margin-top:22px}
+.hero .lead{margin-top:26px}
+.hero .selo-livro{margin-top:28px;max-width:460px}
+.hero-foto{position:relative;margin:0;border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:var(--creme-2);box-shadow:0 30px 60px -36px rgba(30,42,34,.55)}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.hero-foto figcaption{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,253,248,.94);border-radius:16px;padding:12px 16px;display:flex;flex-direction:column}
+.hero-foto figcaption b{font-family:var(--serif);font-size:19px;font-weight:600}
+.hero-foto figcaption span{font-size:14.5px;color:var(--tinta-2)}
+.como .wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:56px;align-items:center}
+.como .passos{grid-template-columns:1fr;gap:0}
+.como .passo{display:grid;grid-template-columns:64px 1fr;column-gap:12px;padding:22px 0;border-top:1px solid var(--linha)}
+.como .passo .n{grid-row:span 2;font-size:36px}
+.como .passo h3{margin:2px 0 6px}
+.como-foto,.tea-foto,.faco-foto{margin:0;border-radius:24px;overflow:hidden;background:var(--creme-2)}
+.como-foto{aspect-ratio:3/4}
+.como-foto img,.tea-foto img,.faco-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.tea-foto{margin-top:28px;aspect-ratio:4/3;max-width:420px}
+.tea-foto img{object-position:50% 25%}
+.faco .cab p{color:var(--tinta-2);margin:12px 0 0}
+.faco-lista a{display:flex;justify-content:space-between;gap:14px;flex:1;text-decoration:none;color:var(--tinta)}
+.faco-lista a i{font-style:normal;color:var(--caramelo-esc);transition:transform var(--mov)}
+.faco-lista a:hover i{transform:translateX(4px)}
+.faco-lista li:has(a:hover){border-color:var(--caramelo)}
+.faco-lado{display:grid;gap:28px}
+.faco-foto{aspect-ratio:4/3}
+.faco-foto img{object-position:50% 30%}
+.final-foto{width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid var(--marca);display:block;margin-bottom:22px}
+@media (max-width:860px){
+  .hero .wrap,.como .wrap{grid-template-columns:1fr;gap:32px}
+  .hero-foto{aspect-ratio:4/4.2;max-width:460px}
+  .como-foto{aspect-ratio:4/3;max-width:460px}
+  .como-foto img{object-position:50% 30%}
+  .tea-foto{max-width:none}
+}
 
 /* Final */
 .final{background:var(--marrom);color:var(--creme);padding:88px 0}
@@ -252,7 +296,9 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 <header class="topo">
   <div class="wrap">
     <a class="marca" href="#inicio"><b>Yara Herval</b><span>Advocacia · Direito da Saúde</span></a>
-    <nav class="menu" aria-label="Principal">
+    <div class="acoes-topo">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu-principal" aria-label="Principal">
       <a href="#o-que-aconteceu">Situações</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#autismo">Autismo</a>
@@ -260,36 +306,30 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
       <a href="#duvidas">Dúvidas</a>
       <a class="btn btn-pri" href="https://wa.me/5581997171678?text=Ol%C3%A1%2C%20Yara%21%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" data-clique="topo"><span class="so-largo">Conversar pelo&nbsp;</span>WhatsApp</a>
     </nav>
+    </div>
   </div>
-  <nav class="atalhos" aria-label="Atalhos">
-    <a href="#o-que-aconteceu">Situações</a><a href="#como-funciona">Como funciona</a><a href="#autismo">Autismo</a><a href="#sobre">Sobre</a><a href="#duvidas">Dúvidas</a>
-  </nav>
 </header>
 
 <main id="conteudo">
 <section class="hero" id="inicio">
   <div class="wrap">
-    <p class="rotulo">Especialista em Direito da Saúde <i></i> Atuação desde 2022 <i></i> OAB/PE 65.465</p>
-    <h1>Entenda seus <em>direitos</em> diante do plano de saúde.</h1>
-    <div class="hero-base">
-      <div>
-        <p class="lead">Orientação jurídica para pacientes e famílias: negativa de cirurgia, exame ou internação, medicamentos, terapias para crianças autistas, reembolso e reajuste. Atendimento online em todo o Brasil.</p>
-        <div class="acoes">
-          <a class="btn btn-pri" href="#o-que-aconteceu">Contar o que aconteceu</a>
-          <a class="btn btn-sec" href="#autismo">Direitos da criança autista</a>
-        </div>
+    <div class="hero-texto">
+      <p class="rotulo">Especialista em Direito da Saúde <i></i> Atuação desde 2022 <i></i> OAB/PE 65.465</p>
+      <h1>Entenda seus <em>direitos</em> diante do plano de saúde.</h1>
+      <p class="lead">Orientação jurídica para pacientes e famílias: negativa de cirurgia, exame ou internação, medicamentos, terapias para crianças autistas, reembolso e reajuste. Atendimento online em todo o Brasil.</p>
+      <div class="acoes">
+        <a class="btn btn-pri" href="#o-que-aconteceu">Contar o que aconteceu</a>
+        <a class="btn btn-sec" href="#autismo">Direitos da criança autista</a>
       </div>
-      <div class="lado">
-        <div class="perfil">
-          <div class="avatar"><img src="yara-avatar.webp" alt="Foto de Yara Herval" width="84" height="84"></div>
-          <div><b>Yara Herval</b><span>Especialista em Direito da Saúde (UNICAP)<br>Atuação desde 2022 · online em todo o Brasil</span></div>
-        </div>
-        <a class="selo-livro" href="#sobre">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/></svg></span>
-          <span>Autora em <i>Direito &amp; Saúde em Debate</i> · Ed. Foco</span>
-        </a>
-      </div>
+      <a class="selo-livro" href="#sobre">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/></svg></span>
+        <span>Autora em <i>Direito &amp; Saúde em Debate</i> · Ed. Foco</span>
+      </a>
     </div>
+    <figure class="hero-foto">
+      <img src="fotos/hero.webp" alt="Foto de Yara Herval" width="900" height="1200" fetchpriority="high">
+      <figcaption><b>Yara Herval</b><span>Especialista em Direito da Saúde (UNICAP)</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -338,6 +378,8 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 
 <section class="sec como" id="como-funciona">
   <div class="wrap">
+    <figure class="como-foto"><img src="fotos/acolhimento.webp" alt="Yara Herval sentada em um sofá, sorrindo" width="720" height="1080" loading="lazy"></figure>
+    <div class="como-texto">
     <div class="cab">
       <span class="selo">Como funciona</span>
       <h2>Como é o <em>atendimento.</em></h2>
@@ -347,6 +389,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
       <div class="passo"><div class="n">01</div><h3>Você conta o que aconteceu</h3><p>Pelo WhatsApp, no seu tempo. Entendo a situação e o que o médico indicou.</p></div>
       <div class="passo"><div class="n">02</div><h3>Analiso os documentos</h3><p>Relatório médico, negativa do plano e contrato. Explico, com palavras simples, quais são as opções.</p></div>
       <div class="passo"><div class="n">03</div><h3>Você acompanha cada etapa</h3><p>Se decidirmos seguir, você recebe atualizações do andamento sem sair de casa.</p></div>
+    </div>
     </div>
   </div>
 </section>
@@ -358,6 +401,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
       <span class="selo">Crianças autistas e famílias</span>
       <h2>O que as regras da ANS dizem sobre <em>as terapias.</em></h2>
       <p>Se você é mãe, pai ou responsável por uma criança autista, esta parte é para você. O texto é direto, para você ler no seu tempo.</p>
+      <figure class="tea-foto"><img src="fotos/sorriso.webp" alt="Yara Herval sorrindo" width="720" height="1080" loading="lazy"></figure>
     </div>
     <div>
       <div class="resumo">
@@ -367,7 +411,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Não há limite no número de sessões de psicologia, fonoaudiologia, terapia ocupacional e fisioterapia indicadas pelo médico (RN ANS 541/2022).</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Se o plano negar, peça a negativa por escrito e anote o número do protocolo.</span></li>
         </ul>
-        <p class="obs">As regras valem para planos regulamentados e têm condições, como a prescrição médica. Cada caso é analisado com os documentos. <a href="https://www.gov.br/ans/pt-br/arquivos/acesso-a-informacao/transparencia-institucional/pareceres-tecnicos-da-ans/2022/PARECER_TCNICO_N_39_2022_TERAPIAS_E_MTODOS__TRANSTORNO_DO_ESPECTRO_AUTISTA_RN_539.2022_RN_541.2022.pdf" target="_blank" rel="noopener">Leia o parecer técnico da ANS</a>.</p>
+        <p class="obs">As regras valem para planos regulamentados e têm condições, como a prescrição médica. Cada caso é analisado com os documentos. Informações revisadas em novembro de 2026. <a href="https://www.gov.br/ans/pt-br/arquivos/acesso-a-informacao/transparencia-institucional/pareceres-tecnicos-da-ans/2022/PARECER_TCNICO_N_39_2022_TERAPIAS_E_MTODOS__TRANSTORNO_DO_ESPECTRO_AUTISTA_RN_539.2022_RN_541.2022.pdf" target="_blank" rel="noopener">Leia o parecer técnico da ANS</a>.</p>
       </div>
       <div class="docs">
         <h3>Documentos que ajudam</h3>
@@ -390,17 +434,19 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
     <div class="cab">
       <span class="selo">O que eu faço</span>
       <h2>Posso te ajudar quando o <em>plano de saúde:</em></h2>
+      <p>Toque em cada situação para entender melhor.</p>
     </div>
     <div class="faco-grade">
       <ul class="faco-lista">
-        <li>nega cirurgia, exame ou internação</li>
-        <li>nega ou limita terapias (ABA, fono, terapia ocupacional, psicologia)</li>
-        <li>não cobre algo por estar fora do rol da ANS</li>
-        <li>nega medicamento ou home care</li>
-        <li>não faz reembolso</li>
-        <li>aplica reajuste abusivo</li>
+        <li><a href="plano-negou-cirurgia.html"><span>nega cirurgia, exame ou internação</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="terapias-autismo.html"><span>nega ou limita terapias (ABA, fono, terapia ocupacional, psicologia)</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="fora-do-rol-da-ans.html"><span>não cobre algo por estar fora do rol da ANS</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="medicamento-e-home-care.html"><span>nega medicamento ou home care</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="reembolso.html"><span>não faz reembolso</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="reajuste-abusivo.html"><span>aplica reajuste abusivo</span><i aria-hidden="true">→</i></a></li>
       </ul>
-      <p class="faco-texto">Acompanho do primeiro contato até o fim do processo: faço despachos com juízes e gabinetes em 1º e 2º grau, audiências e sustentação oral, e explico cada etapa com clareza para a família.</p>
+      <div class="faco-lado"><figure class="faco-foto"><img src="fotos/escritorio.webp" alt="Yara Herval sorrindo" width="720" height="1080" loading="lazy"></figure>
+      <p class="faco-texto">Acompanho do primeiro contato até o fim do processo: faço despachos com juízes e gabinetes em 1º e 2º grau, audiências e sustentação oral, e explico cada etapa com clareza para a família.</p></div>
     </div>
   </div>
 </section>
@@ -452,7 +498,8 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 
 <section class="final" id="contato">
   <div class="wrap">
-    <div>
+    <div class="final-texto">
+      <img class="final-foto" src="fotos/externa.webp" alt="Foto de Yara Herval" width="720" height="1080" loading="lazy">
       <h2>Vamos conversar sobre <em>o seu caso?</em></h2>
       <p>Conte o que aconteceu. Respondo pelo WhatsApp e explico os próximos passos.</p>
     </div>
@@ -478,6 +525,12 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 <script>
 /* Medição de cliques: cada botão de WhatsApp tem data-clique. Quando houver uma ferramenta de estatística, ligar aqui. */
 document.addEventListener('click',function(e){var a=e.target.closest('[data-clique]');if(a&&window.goatcounter&&goatcounter.count){goatcounter.count({path:'clique-'+a.dataset.clique,event:true})}});
+(function(){var b=document.querySelector('.menu-btn'),m=document.getElementById('menu-principal');if(!b||!m)return;
+function fecha(){m.classList.remove('aberto');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Abrir menu')}
+b.addEventListener('click',function(){var a=!m.classList.contains('aberto');m.classList.toggle('aberto',a);b.setAttribute('aria-expanded',String(a));b.setAttribute('aria-label',a?'Fechar menu':'Abrir menu')});
+m.addEventListener('click',function(e){if(e.target.closest('a'))fecha()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){fecha();b.focus()}});
+document.addEventListener('click',function(e){if(!e.target.closest('.topo'))fecha()});})();
 </script>
 </body>
 </html>
