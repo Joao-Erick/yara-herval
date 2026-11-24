@@ -7,7 +7,7 @@
 <meta name="description" content="Yara Herval, advogada especialista em Direito da Saúde (OAB/PE 65.465). Entenda seus direitos diante do plano de saúde: negativa de tratamento, medicamentos, terapias para crianças autistas, reembolso e reajuste. Atendimento online em todo o Brasil.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://joao-erick.github.io/yara-herval/">
-<meta name="theme-color" content="#F7F4EE">
+<meta name="theme-color" content="#1E2A22">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -260,6 +260,44 @@ h2 em{font-style:italic;color:var(--caramelo)}
   .tea-foto{max-width:none}
 }
 
+
+/* Material gratuito (seção autismo) */
+.material{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;margin-top:28px;max-width:460px;text-decoration:none;background:var(--papel);border:1px solid var(--linha);border-left:4px solid var(--caramelo);border-radius:18px;padding:18px 20px;color:var(--tinta)}
+.material:hover{border-color:var(--caramelo)}
+.material-ic{width:46px;height:46px;border-radius:12px;background:var(--creme-2);color:var(--caramelo-esc);display:flex;align-items:center;justify-content:center}
+.material-ic svg{width:24px;height:24px}
+.material small{display:block;font-size:14px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--caramelo-esc)}
+.material b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.3;margin:4px 0}
+.material span span{display:block;font-size:15px;color:var(--tinta-2);line-height:1.5}
+.material i{font-style:normal;font-size:22px;color:var(--caramelo-esc)}
+/* Fases (O que eu faço) */
+.fases{background:var(--papel);border:1px solid var(--linha);border-radius:20px;padding:24px 26px}
+.fases h3{margin:0 0 16px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--caramelo-esc)}
+.fases ol{list-style:none;margin:0;padding:0;counter-reset:f}
+.fases li{counter-increment:f;position:relative;padding:0 0 16px 46px}
+.fases li:last-child{padding-bottom:0}
+.fases li:before{content:counter(f);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--caramelo);color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.fases li:not(:last-child):after{content:"";position:absolute;left:14px;top:32px;bottom:2px;width:2px;background:var(--linha)}
+.fases b{display:block;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--tinta);line-height:1.3}
+.fases span{display:block;font-size:15px;color:var(--tinta-2)}
+.livro .livro-link{display:block;width:max-content;max-width:100%;margin-top:10px;font-weight:600;font-size:15px;color:var(--caramelo-esc);text-underline-offset:3px}
+
+/* Topo escuro, na cor do rodapé */
+.topo{background:rgba(30,42,34,.97);border-bottom-color:#34463A}
+.marca b{color:#F7F4EE}
+.marca span{color:var(--marca)}
+.menu a:not(.btn){color:#D4DCD0}
+.menu a:not(.btn):hover{color:#fff}
+.topo .btn-pri{background:var(--marca);color:var(--marrom)}
+.topo .btn-pri:hover{background:#F1E3A8}
+.topo :focus-visible{outline-color:var(--marca)}
+.menu-btn{background:transparent;border-color:rgba(247,244,238,.3)}
+.menu-btn span{background:#F7F4EE}
+@media (max-width:940px){
+  .menu{background:var(--rodape);border-bottom-color:#34463A}
+  .menu a:not(.btn){color:#F7F4EE;border-bottom-color:rgba(247,244,238,.14)}
+}
+
 /* Final */
 .final{background:var(--marrom);color:var(--creme);padding:88px 0}
 .final .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
@@ -401,7 +439,11 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
       <span class="selo">Crianças autistas e famílias</span>
       <h2>O que as regras da ANS dizem sobre <em>as terapias.</em></h2>
       <p>Se você é mãe, pai ou responsável por uma criança autista, esta parte é para você. O texto é direto, para você ler no seu tempo.</p>
-      <figure class="tea-foto"><img src="fotos/sorriso.webp" alt="Yara Herval sorrindo" width="720" height="1080" loading="lazy"></figure>
+      <a class="material" href="checklist.html">
+        <span class="material-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="m9 11 1.5 1.5L14 9"/><path d="M9 16h6"/></svg></span>
+        <span><small>Material gratuito</small><b>Checklist: documentos quando o plano nega</b><span>Uma lista para marcar, imprimir ou salvar em PDF, com uma parte só sobre terapias para crianças autistas.</span></span>
+        <i aria-hidden="true">→</i>
+      </a>
     </div>
     <div>
       <div class="resumo">
@@ -445,7 +487,16 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
         <li><a href="reembolso.html"><span>não faz reembolso</span><i aria-hidden="true">→</i></a></li>
         <li><a href="reajuste-abusivo.html"><span>aplica reajuste abusivo</span><i aria-hidden="true">→</i></a></li>
       </ul>
-      <div class="faco-lado"><figure class="faco-foto"><img src="fotos/escritorio.webp" alt="Yara Herval sorrindo" width="720" height="1080" loading="lazy"></figure>
+      <div class="faco-lado"><div class="fases">
+        <h3>Fases em que atuo</h3>
+        <ol>
+          <li><b>Análise inicial</b><span>Negativa, contrato e documentos médicos</span></li>
+          <li><b>Negociação com o plano</b><span>Tentativa de solução antes do processo</span></li>
+          <li><b>Processo judicial</b><span>Despachos, audiências e sustentação oral</span></li>
+          <li><b>Fase recursal</b><span>Atuação em 1º e 2º grau</span></li>
+          <li><b>Cumprimento de sentença</b><span>Até o fim do processo</span></li>
+        </ol>
+      </div>
       <p class="faco-texto">Acompanho do primeiro contato até o fim do processo: faço despachos com juízes e gabinetes em 1º e 2º grau, audiências e sustentação oral, e explico cada etapa com clareza para a família.</p></div>
     </div>
   </div>
@@ -461,7 +512,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
       <p>Minha pesquisa de graduação tratou do rol da ANS e da composição do contrato de assistência à saúde suplementar, tema que está no centro de boa parte das negativas que enfrento hoje.</p>
       <div class="livro">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/></svg></div>
-        <div><small>Autora de capítulo</small><b>“A essência do consentimento informado: responsabilidade médica e a comunicação clara com o paciente”</b><span>No livro <i>Direito &amp; Saúde em Debate: Entre a Regulação e a Judicialização do Setor</i> · Editora Foco, 2026</span></div>
+        <div><small>Autora de capítulo</small><b>“A essência do consentimento informado: responsabilidade médica e a comunicação clara com o paciente”</b><span>No livro <i>Direito &amp; Saúde em Debate: Entre a Regulação e a Judicialização do Setor</i> · Editora Foco, 2026</span><a class="livro-link" href="https://editorafoco.com.br/produto/direito-saude-debate-regulacao-judicializacao-2026" target="_blank" rel="noopener">Ver o livro na Editora Foco ↗</a></div>
       </div>
       <div class="dados"><span><b>OAB/PE</b> 65.465</span><span><b>Atendimento</b> online em todo o Brasil</span><span><b>Instagram</b> <a href="https://www.instagram.com/yaraherval.adv/" target="_blank" rel="noopener">@yaraherval.adv</a></span><span><b>LinkedIn</b> <a href="https://www.linkedin.com/in/yara-herval" target="_blank" rel="noopener">yara-herval</a></span></div>
     </div>
